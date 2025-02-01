@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsing titles and prices</title>
+</head>
+<body>
+    <center>
+        <form action="/" method="POST">
+            <h1>Enter target page URL</h1>
+            <textarea name="page_url" placeholder="Page URL" required></textarea>
+            <div id="main_div">
+                <div>
+                    <h1>Enter main container tag and its class name</h1>
+                    <textarea name="input_tag" placeholder="Main tag" required></textarea>
+                    <textarea name="input_class" placeholder="Main class" required></textarea>
+                </div>
+                <div>
+                    <h1>Enter the titles tag and its class name</h1>
+                    <textarea name="input_tag_title" placeholder="Titles tag" required></textarea>
+                    <textarea name="input_class_title" placeholder="Titles class" required></textarea>
+                </div>
+                <div>
+                    <h1>Enter the prices tag and its class name</h1>
+                    <textarea name="input_tag_price" placeholder="Prices tag" required></textarea>
+                    <textarea name="input_class_price" placeholder="Prices class" required></textarea>
+                </div>
+            </div>
+            <br>
+            <button type="submit">Parse</button>
+            {% if status %}
+                <h1> Status code: {{ status }} </h1>
+                <h1> Average price: {{ avg_price }} </h1>
+                <ul>
+                    {% for title, price in titles_prices%}
+                        <li>{{ title }}:   {{ price }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </form>
+    </center>
+</body>
+</html>
